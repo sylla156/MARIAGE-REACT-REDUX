@@ -1,0 +1,14 @@
+.Home{
+    height: 100vh;
+    width: 100vw;
+    background-image: url(../../Assets/img/homeBackground.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
