@@ -36,6 +36,7 @@ const LoginForm = () => {
           const data = response.data;
           Cookies.set("token", data.token, { expires: 1 });
           dispatch(login({ data }));
+          window.location.reload();
         })
         .catch((error) => console.log(error));
     },

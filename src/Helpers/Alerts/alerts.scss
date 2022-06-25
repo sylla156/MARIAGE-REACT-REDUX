@@ -1,0 +1,179 @@
+@use "../../style/_palettes.scss" as *;
+.Alerts {
+  position: absolute;
+  top: 0;
+  height: 30vh;
+  width: 100vw;
+  background-color: $primary;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .success {
+    width: 40%;
+    height: 80%;
+    border: 1px solid $successBorder;
+    border-bottom-width: 5px;
+    background-color: $successBackground;
+    border-radius: 5px;
+    padding: 10px 0 0 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .img {
+      width: 15%;
+      height: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__container {
+        height: 80%;
+        width: 80%;
+        background-image: url(../../Assets/img/success.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .content {
+      width: 85%;
+      .title {
+        font-weight: bold;
+        text-transform: capitalize;
+        font-size: 1.5em;
+        margin: 0;
+      }
+    }
+
+    .exit {
+        width: 7%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        &__container {
+          background-image: url(../../Assets/img/close.png);
+          width: 100%;
+          height: 30%;
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+  }
+
+  .error {
+    border: 1px solid $errorBorder;
+    border-bottom-width: 5px;
+    background-color: $errorBackground;
+    border-radius: 5px;
+    width: 40%;
+    height: 80%;
+    padding: 10px 0 0 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .img {
+      width: 15%;
+      height: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__container {
+        height: 80%;
+        width: 80%;
+        background-image: url(../../Assets/img/error.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .content {
+      width: 85%;
+      .title {
+        font-weight: bold;
+        text-transform: capitalize;
+        font-size: 1.5em;
+        margin: 0;
+      }
+    }
+
+    .exit {
+        width: 7%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        &__container {
+          background-image: url(../../Assets/img/close.png);
+          width: 100%;
+          height: 30%;
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      }
+  }
+
+  .warning {
+    border: 1px solid $warningBorder;
+    border-bottom-width: 5px;
+    background-color: $warningBackground;
+    border-radius: 5px;
+    width: 40%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 0 0;
+    .img {
+      width: 15%;
+      height: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &__container {
+        height: 80%;
+        width: 80%;
+        background-image: url(../../Assets/img/warning.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .content {
+      width: 78%;
+      .title {
+        font-weight: bold;
+        text-transform: capitalize;
+        font-size: 1.5em;
+        margin: 0;
+      }
+    }
+
+    .exit {
+      width: 7%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      &__container {
+        background-image: url(../../Assets/img/close.png);
+        width: 100%;
+        height: 30%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
