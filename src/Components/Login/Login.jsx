@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import Auth from "../../Feature/Auth/Auth";
@@ -32,7 +33,9 @@ const LoginForm = () => {
     Auth(email, password)
       .then((response) => {
         const data = response.data;
+        Cookies.set('token',data.token,{expires:1});
         dispatch(login({ data }));
+        window.location.reload();
       })
       .catch((error) => console.log(error));
   });
