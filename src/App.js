@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
+import Alert from './Helpers/Alerts/Alerts';
 
 function App() {
   return (
-    <h1>hello world</h1>
+   <Alert method='success' title='connexion' message='connexion etablir avec success'/>
   );
 }
 
