@@ -14,10 +14,10 @@ const Login = () => {
       {<LoginForm />}
       <div className="Login__action">
         <p className="Login__action--resetPassword">
-          <a href="">Mot de passe oublié ?</a>
+          <a href="/forget">Mot de passe oublié ?</a>
         </p>
         <p className="Login__action--requestPassword">
-          <a href="">Demander un mot de passe</a>
+          <a href="/passwordRequest">Demander un mot de passe</a>
         </p>
       </div>
     </div>
@@ -28,17 +28,19 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault();
-    Auth(email, password)
-      .then((response) => {
-        const data = response.data;
-        Cookies.set('token',data.token,{expires:1});
-        dispatch(login({ data }));
-        window.location.reload();
-      })
-      .catch((error) => console.log(error));
-  });
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      Auth(email, password)
+        .then((response) => {
+          const data = response.data;
+          Cookies.set("token", data.token, { expires: 1 });
+          dispatch(login({ data }));
+        })
+        .catch((error) => console.log(error));
+    },
+    [email, password]
+  );
 
   const handleChange = useCallback((event) => {
     const type = event.target.type;
@@ -49,7 +51,7 @@ const LoginForm = () => {
     } else if (type === "password") {
       setPassword(value);
     }
-  });
+  }, []);
   return (
     <>
       <form className="Login__formulaire" onSubmit={handleSubmit}>
