@@ -3,6 +3,7 @@ import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import Auth from "../../Feature/Auth/Auth";
 import { login } from "../../Feature/Auth/AuthSlice";
+import Alerts from "../../Helpers/Alerts/Alerts";
 import "./Login.scss";
 
 const Login = () => {
@@ -27,6 +28,7 @@ const Login = () => {
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error,setError] = useState(false);
   const dispatch = useDispatch();
   const handleSubmit = useCallback(
     (event) => {
@@ -38,7 +40,7 @@ const LoginForm = () => {
           dispatch(login({ data }));
           window.location.reload();
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {setError(true)});
     },
     [email, password]
   );
@@ -55,6 +57,7 @@ const LoginForm = () => {
   }, []);
   return (
     <>
+    {error?<Alerts method='error' title='attention' message="l'email ou le password ne correspond pas"/>:''}
       <form className="Login__formulaire" onSubmit={handleSubmit}>
         <div className="Login__formulaire--identifiant">
           <label htmlFor="identifiant">Identifiant</label>
