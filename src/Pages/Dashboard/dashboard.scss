@@ -8,7 +8,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
 
   &__center {
     height: 100%;
@@ -28,30 +27,30 @@
       justify-content: space-between;
       align-items: center;
 
-      .form{
+      .form {
         width: 40%;
         height: 100%;
-        display: flex;  
+        display: flex;
         justify-content: center;
         align-items: center;
 
-        input{
+        input {
           height: 45%;
           width: 70%;
 
-          &::placeholder{
+          &::placeholder {
             padding-left: 10px;
             font-size: 1.1em;
           }
         }
-        button{
+        button {
           background-color: black;
-          height:50%;
+          height: 50%;
           width: 10%;
         }
       }
 
-      .profils{
+      .profils {
         width: 18%;
         height: 100%;
         display: flex;
@@ -65,7 +64,7 @@
       width: 100%;
       height: 90%;
       background-color: red;
-      .header{
+      .header {
         height: 20%;
         width: 100%;
         background-color: orange;
@@ -73,108 +72,139 @@
         justify-content: center;
         align-items: center;
 
-      .first{
-        background-color: yellow;
-        width: 50%;
-        height: 100%;
-        padding-left: 20px;
-        .table{
-          background-color: red;
-          height: 60%;
-          width:55%;
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          column-gap: 10px;
-          img {
-            width: 30px;
-          }
-
-        span{
-          font-size: 1.75em;
-          font-weight: bold;
-          text-transform: capitalize;
-        }
-        }
-
-        .underline{
-          height: 1%;
-          width: 58%;
-          background-color: black;
-        }
-
-        .details{
-          height: 39%;
-          width: 55%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          background-color: orange;
-
-          .premier{
-            img{
-              width: 10px;
-              margin-right: 4px;
+        .first {
+          background-color: yellow;
+          width: 50%;
+          height: 100%;
+          padding-left: 20px;
+          .table {
+            background-color: red;
+            height: 60%;
+            width: 55%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            column-gap: 10px;
+            img {
+              width: 30px;
             }
 
-            span{
+            span {
+              font-size: 1.75em;
               font-weight: bold;
-              font-size: 0.8em;
-            }
-            span:last-child{
-              font-weight: normal;
-              font-size:0.6em;
-              margin-left: 14px;
-              margin-top: 0;
-              display: block;
+              text-transform: capitalize;
             }
           }
 
-          .deuxieme{
-            img{
-              width: 10px;
-              margin-right: 4px;
-              transform: translate(0,2
-              px);
+          .underline {
+            height: 1%;
+            width: 58%;
+            background-color: black;
+          }
+
+          .details {
+            height: 39%;
+            width: 55%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: orange;
+
+            .premier {
+              img {
+                width: 10px;
+                margin-right: 4px;
+              }
+
+              span {
+                font-weight: bold;
+                font-size: 0.8em;
+              }
+              span:last-child {
+                font-weight: normal;
+                font-size: 0.6em;
+                margin-left: 14px;
+                margin-top: 0;
+                display: block;
+              }
             }
 
-            span{
-              font-weight: bold;
-              font-size: 0.8em;
+            .deuxieme {
+              img {
+                width: 10px;
+                margin-right: 4px;
+                transform: translate(0, 2 px);
+              }
+
+              span {
+                font-weight: bold;
+                font-size: 0.8em;
+              }
+              span:last-child {
+                font-weight: normal;
+                font-size: 0.6em;
+                margin-left: 14px;
+                margin-top: 0;
+                display: block;
+              }
             }
-            span:last-child{
-              font-weight: normal;
-              font-size:0.6em;
-              margin-left: 14px;
-              margin-top: 0;
-              display: block;
+          }
+        }
+        .second {
+          background-color: turquoise;
+          width: 50%;
+          height: 100%;
+
+          display: flex;
+          justify-content: flex-end;
+          align-items: flex-end;
+          padding-right: 20px;
+          .child {
+            width: 50%;
+            height: 85%;
+            background-color: red;
+            .title{
+              display: flex;
+              justify-content: flex-end;
+              align-items: center; 
+              font-size: 1em;
+              column-gap:5px;
+              text-transform: capitalize;
+              font-weight: bold;
+              margin-bottom: 10px;
+              img{
+                width: 15px;
+              }
+            }
+
+            .content{
+              background-color: orangered;
+              height: 60%;
+              display: flex;
+              justify-content: flex-end;
+              align-items: flex-start;
+              p{
+                font-size: 2em;
+              }
             }
           }
         }
       }
-      .second{
-        background-color: turquoise;
-        width: 50%;
-        height: 100%;
-      }
-      }
 
-      .tableTitle{
+      .tableTitle {
         height: 15%;
         width: 100%;
         background-color: green;
       }
 
-    .tableContent{
-      height: 65%;
-      width: 100%;
-      background-color:blue;
-    }
+      .tableContent {
+        height: 65%;
+        width: 100%;
+        background-color: blue;
+      }
     }
   }
 }
-
-
 
 .dashboard__sidebard {
   height: 100%;
@@ -238,7 +268,7 @@
       font-size: 0.8em;
       word-spacing: 5px;
     }
-    img{
+    img {
       width: 70px;
     }
   }

@@ -49,21 +49,21 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="second">
-              <div className="premier">
+              <div className="premier child">
                 <div className="title">
                   <span>Programmes</span>
                   <img src={book} alt="book" />
                 </div>
-                <div>
+                <div className="content">
                   <p>03</p>
                 </div>
               </div>
-              <div className="deuxieme">
+              <div className="deuxieme child">
                 <div className="title">
                   <span>Invite</span>
                   <img src={people} alt="people" />
                 </div>
-                <div>
+                <div className="content">
                   <p>03</p>
                 </div>
               </div>
