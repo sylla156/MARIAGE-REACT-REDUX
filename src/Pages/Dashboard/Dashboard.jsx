@@ -22,6 +22,8 @@ import position from "../../Assets/img/Profils/position.png";
 import otherUser from "../../Assets/img/Profils/otherUser.png";
 import invitation from "../../Assets/img/Profils/invitation.png";
 import creation from "../../Assets/img/Profils/creation.png";
+import tableImg from "../../Assets/img/Profils/tableImg.png";
+import imgAction from '../../Assets/img/Profils/imgAction.png';
 
 const Dashboard = () => {
   return (
@@ -87,13 +89,88 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="tableContent"></div>
+          <div className="tableContent">
+            <table>
+              <thead>
+                <tr>
+                  <th>
+                    <input type="checkbox" />
+                  </th>
+                  <th>
+                    Nom et prenom <Imgs />
+                  </th>
+                  <th>
+                    Tags <Imgs />
+                  </th>
+                  <th>
+                    Cote/Table <Imgs />
+                  </th>
+                  <th>
+                    Guess <Imgs />
+                  </th>
+                  <th>
+                    Telephone <Imgs />
+                  </th>
+                  <th>
+                    E-mail <Imgs />
+                  </th>
+                  <th>
+                    Identifiant <Imgs />
+                  </th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>Sylla ibrahim</td>
+                  <td>
+                    <span>Parent</span>
+                    <span>vip</span>
+                  </td>
+                  <td>
+                    Parasole Gauche
+                  </td>
+                  <td>4</td>
+                  <td>07080050604</td>
+                  <td>brahim@novate.com</td>
+                  <td>FF5WE66F</td>
+                  <td><ImgAction/></td>
+                </tr>
+                <tr>
+                  <td>
+                    <input type="checkbox" />
+                  </td>
+                  <td>Sylla ibrahim</td>
+                  <td>
+                    <span>Parent</span>
+                    <span>vip</span>
+                  </td>
+                  <td>
+                    Parasole Gauche
+                  </td>
+                  <td>4</td>
+                  <td>07080050604</td>
+                  <td>brahim@novate.com</td>
+                  <td>FF5WE66F</td>
+                  <td><ImgAction/></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
+const Imgs = () => {
+  return <img src={tableImg} alt="icons" />;
+};
+const ImgAction = () => {
+  return <img src={imgAction} alt="action" />
+}
 const Header = () => {
   return (
     <div className="header">
