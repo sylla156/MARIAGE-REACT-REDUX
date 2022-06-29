@@ -19,7 +19,7 @@ import calend from "../../Assets/img/Profils/calend.png";
 import book from "../../Assets/img/Profils/book.png";
 import people from "../../Assets/img/Profils/people.png";
 import position from "../../Assets/img/Profils/position.png";
-import otherUser from '../../Assets/img/Profils/otherUser.png';
+import otherUser from "../../Assets/img/Profils/otherUser.png";
 import invitation from "../../Assets/img/Profils/invitation.png";
 import creation from "../../Assets/img/Profils/creation.png";
 
@@ -47,45 +47,46 @@ const Dashboard = () => {
                 </p>
               </div>
             </div>
-          </div>
-          <div className="border">
-            <div className="first"></div>
-            <div className="second"></div>
-            <div className="three"></div>
-          </div>
-          <div className="search">
-            <div className="inputs">
-              <div className="status">
-                <label for="status">Trier par</label>
-                <select name="status" id="status">
-                  <option value="">Confimees</option>
-                  <option value="dog">Dog</option>
-                </select>
+            <div className="border">
+              <div className="first"></div>
+              <div className="second"></div>
+              <div className="three"></div>
+            </div>
+            <div className="search">
+              <div className="inputs">
+                <div className="status">
+                  <label htmlFor="status">Trier par</label>
+                  <select name="status" id="status">
+                    <option value="">Confimees</option>
+                    <option value="dog">Dog</option>
+                  </select>
+                </div>
+                <div className="tags">
+                  <label htmlFor="tags">tags</label>
+                  <select name="tags" id="tags">
+                    <option value="">parents</option>
+                    <option value="dog">vip</option>
+                  </select>
+                </div>
               </div>
-              <div className="tags">
-                <label htmlFor="tags">tags</label>
-                <select name="tags" id="tags">
-                  <option value="">parents</option>
-                  <option value="dog">vip</option>
-                </select>
+              <div className="btn">
+                <p>Action selection</p>
+                <p>
+                  <img src={creation} alt="creation de groupe" />
+                  <span>cree un groupe</span>
+                </p>
+                <p>
+                  <img src={invitation} alt="envoyer une invitation" />
+                  <span>envoyer une invitation</span>
+                </p>
+                <p className="addUser">
+                  <img src={otherUser} alt="ajouter un user" />
+                  <span>Ajouter</span>
+                </p>
               </div>
             </div>
-            <div className="btn">
-              <p>Action selection</p>
-              <p>
-                <img src={creation} alt="creation de groupe" />
-                <span>cree un groupe</span>
-              </p>
-              <p>
-                <img src={invitation} alt="envoyer une invitation" />
-                <span>envoyer une invitation</span>
-              </p>
-              <p>
-                <img src={otherUser} alt="ajouter un user" />
-                <span>Ajouter</span>
-              </p>
-            </div>
           </div>
+
           <div className="tableContent"></div>
         </div>
       </div>
