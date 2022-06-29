@@ -15,6 +15,12 @@ import search from "../../Assets/img/Profils/search.png";
 import cloche from "../../Assets/img/Profils/cloche.png";
 import logout from "../../Assets/img/Profils/logout.png";
 import profile from "../../Assets/img/Profils/profile.png";
+import calend from "../../Assets/img/Profils/calend.png";
+import book from "../../Assets/img/Profils/book.png";
+import people from "../../Assets/img/Profils/people.png";
+import position from "../../Assets/img/Profils/position.png";
+
+
 const Dashboard = () => {
   return (
     <div className="dashboard">
@@ -22,24 +28,54 @@ const Dashboard = () => {
       <Sidebard />
       <div className="dashboard__center">
         {/* navbar top por setting et search of app */}
-        <div className="dashboard__center--navbar">
-          <div className="form">
-            <input type="text" placeholder="input search text" />
-            <button>
-              <img src={search} alt="search" />
-            </button>
+        <Navbar />
+        {/* where the data will be represente  */}
+        <div className="dashboard__center--data">
+          <div className="header">
+            <div className="first">
+              <DashboardTitle img={cr} title='ceremonie religieuse'/>
+              <div className="underline"></div>
+              <div className="details">
+                <div className="premier">
+                  <img src={calend} alt="calendrier" />
+                  <span>Le 17 Mars 2022</span>
+                   <span>A partir de 10 h</span>
+                </div>
+                <div className="deuxieme">
+                  <img src={position} alt="position" />
+                  <span>Mosquee Hamsa</span>
+                  <span>Cocody,Abidjan,Cote d'ivoire</span>
+                </div>
+              </div>
+            </div>
+            <div className="second">
+              <div className="premier">
+                <div className="title">
+                  <span>Programmes</span>
+                  <img src={book} alt="book" />
+                </div>
+                <div>
+                  <p>03</p>
+                </div>
+              </div>
+              <div className="deuxieme">
+                <div className="title">
+                  <span>Invite</span>
+                  <img src={people} alt="people" />
+                </div>
+                <div>
+                  <p>03</p>
+                </div>
+              </div>
+            </div>
           </div>
+          <div className="tableTitle">
 
-          <div className="profils">
-            <img src={cloche} alt="cloche" />
-            <img src={profile} alt="profil" />
-            <p>Admin</p>
-            <img src={logout} alt="logout" />
+          </div>
+          <div className="tableContent">
+
           </div>
         </div>
-
-        {/* where the data will be represente  */}
-        <div className="dashboard__center--data"></div>
       </div>
     </div>
   );
@@ -81,6 +117,26 @@ const DashboardTitle = (props) => {
     <div className="table">
       <img src={props.img} alt="tableau de title" />
       <span>{props.title}</span>
+    </div>
+  );
+};
+
+const Navbar = () => {
+  return (
+    <div className="dashboard__center--navbar">
+      <div className="form">
+        <input type="text" placeholder="input search text" />
+        <button>
+          <img src={search} alt="search" />
+        </button>
+      </div>
+
+      <div className="profils">
+        <img src={cloche} alt="cloche" />
+        <img src={profile} alt="profil" />
+        <p>Admin</p>
+        <img src={logout} alt="logout" />
+      </div>
     </div>
   );
 };
