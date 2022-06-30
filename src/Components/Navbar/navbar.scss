@@ -21,7 +21,8 @@
 
         &::placeholder {
           padding-left: 10px;
-          font-size: 1.1em;
+          font-size: 1em;
+          text-transform: capitalize;
         }
       }
       button {
@@ -32,11 +33,12 @@
     }
 
     .profils {
-      width: 18%;
+      width: 15%;
       height: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-right: 50px;
+      color: $primary;
     }
   }

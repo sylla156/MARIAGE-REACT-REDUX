@@ -8,7 +8,7 @@ const Navbar = () => {
     return (
       <div className="dashboard__center--navbar">
         <div className="form">
-          <input type="text" placeholder="input search text" />
+          <input type="text" placeholder="Effectuer une recherche" />
           <button>
             <img src={search} alt="search" />
           </button>

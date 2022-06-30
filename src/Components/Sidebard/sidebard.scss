@@ -26,6 +26,7 @@
     height: 6.5%;
     column-gap: 15px;
     padding-left: 20px;
+    color: $black;
 
     img {
       width: 20px;
@@ -40,6 +41,7 @@
   .tableActive {
     background-color: #e9caba50;
     border-right: 2px solid $secondary;
+    color: $secondary;
   }
   .subtitle {
     width: 70%;
