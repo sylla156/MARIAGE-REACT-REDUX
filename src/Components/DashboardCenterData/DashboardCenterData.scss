@@ -162,7 +162,6 @@
 
         .subtitleActive {
           color: $secondary!important;
-          font-weight: bolder;
         }
       }
 
@@ -253,18 +252,35 @@
           justify-content: center;
           align-items: center;
           width: 20%;
+          height: 80%;
           font-size: 0.8em;
           text-transform: capitalize;
           margin-left: 10px;
+          cursor: pointer;
+          transition: transform 0.3s;
+          &:hover{
+            transform: scale(1.02);
+            border: 1px solid $border;
+            background-color: #f1e8e8c0;
+          }
           img {
             width: 15px;
             margin-right: 5px;
           }
         }
+        .invitation{
+          color: green;
+        }
         .addUser {
           background-color: $secondary;
           height: 80%;
           margin-left: 20px;
+          color: $primary;
+          &:hover{
+            transform: scale(1.02);
+            border: 1px solid $border;
+            background-color: $secondary;
+          }
         }
       }
     }
@@ -279,17 +295,18 @@
       width: 81.4vw;
       border-collapse: collapse;
       overflow: scroll;
-      border: 1px solid #e3dbdbe5;
+      border: 1px solid $tableBorder;
       thead {
-        background-color: #e3dbdbe5;
-        border: 1px solid #e3dbdbe5;
+        background-color: $tablehead;
+        border: 1px solid $tableBorder;
         th {
           padding: 10px;
         }
       }
       tbody {
         tr {
-          border: 1px solid #e3dbdbe5;
+          border: 1px solid $tableBorder;
+          background-color: $tableBody;
         }
         td {
           text-align: center;

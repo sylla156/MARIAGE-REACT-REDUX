@@ -79,11 +79,11 @@ const TableTitle = () => {
         </div>
         <div className="btn">
           <p>Action selection</p>
-          <p>
+          <p className="creation">
             <img src={creation} alt="creation de groupe" />
             <span>cree un groupe</span>
           </p>
-          <p>
+          <p className="invitation">
             <img src={invitation} alt="envoyer une invitation" />
             <span>envoyer une invitation</span>
           </p>
