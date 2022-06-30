@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import calend from "../../Assets/img/Profils/calend.png";
 import book from "../../Assets/img/Profils/book.png";
 import people from "../../Assets/img/Profils/people.png";
@@ -9,7 +9,7 @@ import creation from "../../Assets/img/Profils/creation.png";
 import tableImg from "../../Assets/img/Profils/tableImg.png";
 import imgAction from "../../Assets/img/Profils/imgAction.png";
 import cr from "../../Assets/img/Icons/cr.png";
-import './DashboardCenterData.scss';
+import "./DashboardCenterData.scss";
 const DashboardCenterData = () => {
   return (
     <div className="dashboard__center--data">
@@ -20,13 +20,31 @@ const DashboardCenterData = () => {
   );
 };
 const TableTitle = () => {
+  const handleClick = useCallback((event) => {
+    const subtitleAll = Array.from(
+      document.querySelectorAll(".title .subtitle p")
+    );
+    const subtitleBorderAll = Array.from(
+      document.querySelectorAll(".border .subtitle div")
+    )
+    subtitleAll.forEach((subtitle) =>
+      subtitle.classList.remove("subtitleActive")
+    );
+    subtitleBorderAll.forEach((subtitleBorder) =>
+    subtitleBorder.classList.remove("subtitleBorderActive")
+  );
+    const position = event.target.classList[0];
+    const border = document.querySelector(`.border .subtitle .${position}`);
+    border.classList.add('subtitleBorderActive')
+    event.target.classList.add("subtitleActive");
+  });
   return (
     <div className="tableTitle">
       <div className="title">
         <div className="subtitle">
-          <p>liste des invites (45)</p>
-          <p>groupe d'invites (03)</p>
-          <p>programmes (01)</p>
+          <p onClick={handleClick} className='first'>liste des invites (45)</p>
+          <p onClick={handleClick} className='second'>groupe d'invites (03)</p>
+          <p onClick={handleClick} className='three'>programmes (01)</p>
         </div>
         <div className="stats">
           <p>
@@ -35,9 +53,12 @@ const TableTitle = () => {
         </div>
       </div>
       <div className="border">
-        <div className="first"></div>
-        <div className="second"></div>
-        <div className="three"></div>
+        <div className="subtitle">
+          <div className="first"></div>
+          <div className="second"></div>
+          <div className="three"></div>
+        </div>
+        <div className="stats"></div>
       </div>
       <div className="search">
         <div className="inputs">
