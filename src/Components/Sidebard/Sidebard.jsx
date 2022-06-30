@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import "./sidebard.scss";
 import logo from "../../Assets/img/Icons/logo.png";
 import dh from "../../Assets/img/Icons/dh.png";
@@ -45,8 +45,14 @@ const Sidebard = () => {
 };
 
 const DashboardTitle = (props) => {
+  const select = useRef();
+  const handleClick = useCallback(() => {
+    const AllSelect = Array.from( document.querySelectorAll(".table"));
+    AllSelect.forEach((select) => select.classList.remove("tableActive"));
+    select.current.classList.add("tableActive");
+  }, [select]);
   return (
-    <div className="table">
+    <div className="table" onClick={handleClick} ref={select}>
       <img src={props.img} alt="tableau de title" />
       <span>{props.title}</span>
     </div>
