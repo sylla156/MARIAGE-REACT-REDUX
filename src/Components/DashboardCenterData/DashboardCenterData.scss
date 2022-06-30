@@ -27,13 +27,15 @@
           span {
             font-size: 1.75em;
             text-transform: capitalize;
+            font-weight: bold;
+            color: $secondary;
           }
         }
 
         .underline {
           height: 1%;
           width: 58%;
-          background-color: gray;
+          background-color: $border;
         }
 
         .details {
@@ -51,6 +53,7 @@
 
             span {
               font-size: 0.8em;
+              font-weight: bold;
             }
             span:last-child {
               font-weight: normal;
@@ -58,6 +61,8 @@
               margin-left: 14px;
               margin-top: 0;
               display: block;
+              color: #b8acac;
+
             }
           }
 
@@ -70,6 +75,8 @@
 
             span {
               font-size: 0.8em;
+              font-weight: bold;
+              text-transform: capitalize;
             }
             span:last-child {
               font-weight: normal;
@@ -77,6 +84,7 @@
               margin-left: 14px;
               margin-top: 0;
               display: block;
+              color: #b8acac;
             }
           }
         }
@@ -100,6 +108,7 @@
             column-gap: 5px;
             text-transform: capitalize;
             margin-bottom: 10px;
+            font-weight: bolder;
             img {
               width: 15px;
             }
@@ -113,18 +122,19 @@
             p {
               font-size: 2em;
               transform: translate(-10px, -5px);
+              font-weight: bold;
             }
           }
         }
         .premier {
           .content {
-            background-color: #e9dfdf90;
+            background-color: #EAEEF2;
           }
         }
 
         .deuxieme {
           .content {
-            background-color: #a1a1e993;
+            background-color: #F1F5F9;
           }
         }
       }
