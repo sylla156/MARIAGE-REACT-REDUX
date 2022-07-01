@@ -257,9 +257,8 @@
           text-transform: capitalize;
           margin-left: 10px;
           cursor: pointer;
-          transition: transform 0.3s;
+          transition: border 0.3s;
           &:hover{
-            transform: scale(1.02);
             border: 1px solid $border;
             background-color: #f1e8e8c0;
           }
@@ -277,11 +276,11 @@
           margin-left: 20px;
           color: $primary;
           &:hover{
-            transform: scale(1.02);
-            border: 1px solid $border;
+            border: none;
             background-color: $secondary;
           }
         }
+
       }
     }
   }
