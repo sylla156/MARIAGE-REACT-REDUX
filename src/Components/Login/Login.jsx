@@ -37,7 +37,8 @@ const LoginForm = () => {
         .then((response) => {
           const data = response.data;
           Cookies.set("token", data.token, { expires: 1 });
-          dispatch(login({ data }));
+          const token = data.token;
+          dispatch(login({ token }));
           window.location.reload();
         })
         .catch((error) => {setError(true)});

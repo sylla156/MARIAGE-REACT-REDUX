@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./dashboard.scss";
 import Sidebard from "../../Components/Sidebard/Sidebard";
 import DashboardCenter from "../../Components/DashboardCenter/DashboardCenter";
+import decode from "../../Helpers/decode";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
+  const [sidebardSwitch, setsidebardSwitch] = useState("ceremonie");
+  const token = useSelector(state => state.auth.value)
+  useEffect(() => {
+    console.log(sidebardSwitch);
+    const users = decode(token.token);
+  }, [sidebardSwitch]);
+  const changeSwitch = useCallback(
+    (value) => {
+      setsidebardSwitch(value);
+    },
+    []
+  );
+
   return (
     <div className="dashboard">
       {/* sidebard left for app */}
-      <Sidebard/>
+      <Sidebard onSidebardSwitch={changeSwitch} />
       {/* dashboard center */}
-      <DashboardCenter />
+      <DashboardCenter dashboardPosition={sidebardSwitch}/>
     </div>
   );
 };
