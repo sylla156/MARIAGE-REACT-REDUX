@@ -5,8 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import "./dashboardCenter.scss";
 
 const DashboardCenter = (props) => {
-  const state = useSelector(state => state.auth.value);
-  console.log(state);
+ 
   return (
     <div className="dashboard__center">
       {/* navbar top por setting et search of app */}

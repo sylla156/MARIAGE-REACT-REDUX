@@ -25,7 +25,7 @@ const Sidebard = (props) => {
       <div className="logo">
         <img src={logo} alt="logo of app" />
       </div>
-      <DashboardTitle onDashboardChange={dashboardSwitch} img={dh} title="tableau de bord" position='tableau'/>
+      <DashboardTitle onDashboardChange={dashboardSwitch} img={dh} title="tableau de bord" position='tableau de bord'/>
       <p className="subtitle">
         <span>ceremonie</span>
       </p>

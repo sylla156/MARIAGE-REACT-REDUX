@@ -4,6 +4,7 @@ import Sidebard from "../../Components/Sidebard/Sidebard";
 import DashboardCenter from "../../Components/DashboardCenter/DashboardCenter";
 import decode from "../../Helpers/decode";
 import { useSelector } from "react-redux";
+import Events from "../../Feature/Events/Events";
 
 const Dashboard = () => {
   const [sidebardSwitch, setsidebardSwitch] = useState("ceremonie");
@@ -11,6 +12,9 @@ const Dashboard = () => {
   useEffect(() => {
     console.log(sidebardSwitch);
     const users = decode(token.token);
+    Events().then((response) => {
+      console.log(response);
+    })
   }, [sidebardSwitch]);
   const changeSwitch = useCallback(
     (value) => {
