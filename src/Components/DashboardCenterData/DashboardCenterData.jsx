@@ -10,6 +10,7 @@ import tableImg from "../../Assets/img/Profils/tableImg.png";
 import imgAction from "../../Assets/img/Profils/imgAction.png";
 import cr from "../../Assets/img/Icons/cr.png";
 import "./DashboardCenterData.scss";
+import religieuse from "../../Helpers/contents/religieuse";
 const DashboardCenterData = () => {
   const [table, setTable] = useState("first");
   const handleTable = useCallback((value) => {
@@ -52,7 +53,7 @@ const TableTitle = ({ onChangeTable, table }) => {
     <div className="tableTitle">
       <div className="title">
         <div className="subtitle">
-          <p onClick={handleClick} className="first">
+          <p onClick={handleClick} className="first subtitleActive">
             liste des invites (45)
           </p>
           <p onClick={handleClick} className="second">
@@ -70,7 +71,7 @@ const TableTitle = ({ onChangeTable, table }) => {
       </div>
       <div className="border">
         <div className="subtitle">
-          <div className="first"></div>
+          <div className="first subtitleBorderActive"></div>
           <div className="second"></div>
           <div className="three"></div>
         </div>
@@ -113,130 +114,34 @@ const TableTitle = ({ onChangeTable, table }) => {
   );
 };
 const TableContent = ({ table }) => {
-  const [tableContent, setTableContent] = useState();
-  const head = [
-    "nom et prenoms",
-    "tags",
-    "cote/table",
-    "presence",
-    "guess",
-    "telephone",
-    "identifiant",
-    "action",
-  ];
-  const body = [
-    [
-      "sylla ibrahim",
-      "vip",
-      "Parasole Gauche",
-      "4",
-      "0105060406",
-      "brahim@novate.com",
-      "FFW5FEWS",
-    ],
-    [
-      "sylla ibrahim",
-      "vip",
-      "Parasole Gauche",
-      "4",
-      "0105060406",
-      "brahim@novate.com",
-      "FFW5FEWS",
-    ],
-    [
-      "sylla ibrahim",
-      "vip",
-      "Parasole Gauche",
-      "4",
-      "0105060406",
-      "brahim@novate.com",
-      "FFW5FEWS",
-    ],
-    [
-      "sylla ibrahim",
-      "vip",
-      "Parasole Gauche",
-      "4",
-      "0105060406",
-      "brahim@novate.com",
-      "FFW5FEWS",
-    ],
-  ];
-  useEffect(() => {}, [table]);
-  return (
-    <div className="tableContent">
-      <Table head={head} body={body} />
-      {/* <table>
-        <thead>
-          <tr>
-            <th>
-              <input type="checkbox" />
-            </th>
-            <th>
-              Nom et prenom <Imgs />
-            </th>
-            <th>
-              Tags <Imgs />
-            </th>
-            <th>
-              Cote/Table <Imgs />
-            </th>
-            <th>
-              Guess <Imgs />
-            </th>
-            <th>
-              Telephone <Imgs />
-            </th>
-            <th>
-              E-mail <Imgs />
-            </th>
-            <th>
-              Identifiant <Imgs />
-            </th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>Sylla ibrahim</td>
-            <td>
-              <span>Parent</span>
-              <span>vip</span>
-            </td>
-            <td>Parasole Gauche</td>
-            <td>4</td>
-            <td>07080050604</td>
-            <td>brahim@novate.com</td>
-            <td>FF5WE66F</td>
-            <td>
-              <ImgAction />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>Sylla ibrahim</td>
-            <td>
-              <span>Parent</span>
-              <span>vip</span>
-            </td>
-            <td>Parasole Gauche</td>
-            <td>4</td>
-            <td>07080050604</td>
-            <td>brahim@novate.com</td>
-            <td>FF5WE66F</td>
-            <td>
-              <ImgAction />
-            </td>
-          </tr>
-        </tbody>
-      </table> */}
-    </div>
+  const [tableContent, setTableContent] = useState(
+    <Table head={religieuse().headList} body={religieuse().bodyList} />
   );
+  useEffect(() => {
+    switch (table) {
+      case "first":
+        setTableContent(
+          <Table head={religieuse().headList} body={religieuse().bodyList} />
+        );
+        break;
+      case "second":
+        setTableContent(
+          <Table head={religieuse().headGroupe} body={religieuse().bodyGroupe} />
+        );
+
+        break;
+      case "three":
+        setTableContent(
+          <Table head={religieuse().headProgrammes} body={religieuse().bodyProgrammes} />
+        );
+
+        break;
+
+      default:
+        break;
+    }
+  }, [table]);
+  return <div className="tableContent">{tableContent}</div>;
 };
 
 const Table = ({ head, body }) => {
@@ -247,7 +152,7 @@ const Table = ({ head, body }) => {
           <th>
             <input type="checkbox" />
           </th>
-          {head.map((element,key) => {
+          {head.map((element, key) => {
             return (
               <th key={key}>
                 {element} {<Imgs />}
@@ -259,7 +164,7 @@ const Table = ({ head, body }) => {
         </tr>
       </thead>
       <tbody>
-        {body.map((elements,key) => {
+        {body.map((elements, key) => {
           return (
             <tr key={key}>
               <td>
@@ -267,7 +172,7 @@ const Table = ({ head, body }) => {
                 <input type="checkbox" />
               </td>
 
-              {elements.map((element,key) => {
+              {elements.map((element, key) => {
                 return <td key={key}>{element}</td>;
               })}
               <td>{<ImgAction />}</td>
@@ -284,7 +189,7 @@ const Imgs = () => {
 const ImgAction = () => {
   return <img src={imgAction} alt="action" />;
 };
-const Header = () => {
+const Header = ({ table }) => {
   return (
     <div className="header">
       <div className="first">
