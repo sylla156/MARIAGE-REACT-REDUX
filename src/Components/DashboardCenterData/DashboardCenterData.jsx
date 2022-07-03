@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import calend from "../../Assets/img/Profils/calend.png";
 import book from "../../Assets/img/Profils/book.png";
 import people from "../../Assets/img/Profils/people.png";
@@ -11,40 +11,56 @@ import imgAction from "../../Assets/img/Profils/imgAction.png";
 import cr from "../../Assets/img/Icons/cr.png";
 import "./DashboardCenterData.scss";
 const DashboardCenterData = () => {
+  const [table, setTable] = useState("first");
+  const handleTable = useCallback((value) => {
+    setTable(value);
+  }, []);
   return (
     <div className="dashboard__center--data">
-      <Header />
-      <TableTitle />
-      <TableContent />
+      <Header table={table} />
+      <TableTitle onChangeTable={handleTable} table={table} />
+      <TableContent table={table} />
     </div>
   );
 };
-const TableTitle = () => {
-  const handleClick = useCallback((event) => {
-    const subtitleAll = Array.from(
-      document.querySelectorAll(".title .subtitle p")
-    );
-    const subtitleBorderAll = Array.from(
-      document.querySelectorAll(".border .subtitle div")
-    )
-    subtitleAll.forEach((subtitle) =>
-      subtitle.classList.remove("subtitleActive")
-    );
-    subtitleBorderAll.forEach((subtitleBorder) =>
-    subtitleBorder.classList.remove("subtitleBorderActive")
+const TableTitle = ({ onChangeTable, table }) => {
+  const handleClick = useCallback(
+    (event) => {
+      const subtitleAll = Array.from(
+        document.querySelectorAll(".title .subtitle p")
+      );
+      const subtitleBorderAll = Array.from(
+        document.querySelectorAll(".border .subtitle div")
+      );
+      subtitleAll.forEach((subtitle) =>
+        subtitle.classList.remove("subtitleActive")
+      );
+      subtitleBorderAll.forEach((subtitleBorder) =>
+        subtitleBorder.classList.remove("subtitleBorderActive")
+      );
+      const position = event.target.classList[0];
+      const border = document.querySelector(`.border .subtitle .${position}`);
+      border.classList.add("subtitleBorderActive");
+      event.target.classList.add("subtitleActive");
+      // top it's the select effect
+      //down is for change the table
+      onChangeTable(event.target.classList[0]);
+    },
+    [table]
   );
-    const position = event.target.classList[0];
-    const border = document.querySelector(`.border .subtitle .${position}`);
-    border.classList.add('subtitleBorderActive')
-    event.target.classList.add("subtitleActive");
-  });
   return (
     <div className="tableTitle">
       <div className="title">
         <div className="subtitle">
-          <p onClick={handleClick} className='first'>liste des invites (45)</p>
-          <p onClick={handleClick} className='second'>groupe d'invites (03)</p>
-          <p onClick={handleClick} className='three'>programmes (01)</p>
+          <p onClick={handleClick} className="first">
+            liste des invites (45)
+          </p>
+          <p onClick={handleClick} className="second">
+            groupe d'invites (03)
+          </p>
+          <p onClick={handleClick} className="three">
+            programmes (01)
+          </p>
         </div>
         <div className="stats">
           <p>
@@ -96,10 +112,61 @@ const TableTitle = () => {
     </div>
   );
 };
-const TableContent = () => {
+const TableContent = ({ table }) => {
+  const [tableContent, setTableContent] = useState();
+  const head = [
+    "nom et prenoms",
+    "tags",
+    "cote/table",
+    "presence",
+    "guess",
+    "telephone",
+    "identifiant",
+    "action",
+  ];
+  const body = [
+    [
+      "sylla ibrahim",
+      "vip",
+      "Parasole Gauche",
+      "4",
+      "0105060406",
+      "brahim@novate.com",
+      "FFW5FEWS",
+    ],
+    [
+      "sylla ibrahim",
+      "vip",
+      "Parasole Gauche",
+      "4",
+      "0105060406",
+      "brahim@novate.com",
+      "FFW5FEWS",
+    ],
+    [
+      "sylla ibrahim",
+      "vip",
+      "Parasole Gauche",
+      "4",
+      "0105060406",
+      "brahim@novate.com",
+      "FFW5FEWS",
+    ],
+    [
+      "sylla ibrahim",
+      "vip",
+      "Parasole Gauche",
+      "4",
+      "0105060406",
+      "brahim@novate.com",
+      "FFW5FEWS",
+    ],
+  ];
+  useEffect(() => {}, [table]);
   return (
     <div className="tableContent">
-      <table>
+      <Table head={head} body={body} />
+      {/* <table>
         <thead>
           <tr>
             <th>
@@ -167,8 +234,48 @@ const TableContent = () => {
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> */}
     </div>
+  );
+};
+
+const Table = ({ head, body }) => {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" />
+          </th>
+          {head.map((element,key) => {
+            return (
+              <th key={key}>
+                {element} {<Imgs />}
+              </th>
+            );
+          })}
+
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {body.map((elements,key) => {
+          return (
+            <tr key={key}>
+              <td>
+                {" "}
+                <input type="checkbox" />
+              </td>
+
+              {elements.map((element,key) => {
+                return <td key={key}>{element}</td>;
+              })}
+              <td>{<ImgAction />}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 };
 const Imgs = () => {
