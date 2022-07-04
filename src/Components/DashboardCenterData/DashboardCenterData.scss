@@ -257,10 +257,12 @@
           text-transform: capitalize;
           margin-left: 10px;
           cursor: pointer;
-          transition: border 0.3s;
           &:hover{
-            border: 1px solid $border;
             background-color: #f1e8e8c0;
+          }
+          &:active{
+            background-color:#dbd1d1c0 ;
+            transition: background 0.1s;
           }
           img {
             width: 15px;

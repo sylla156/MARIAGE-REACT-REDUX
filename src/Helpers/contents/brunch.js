@@ -83,8 +83,8 @@ const brunch = () => {
     ["famille", "4"],
     ["famille", "4"],
     ["famille", "4"],
-    ["travail", "2"],
-    ["travail", "2"],
+    ["amis", "2"],
+    ["amis", "2"],
   ];
 
   const headProgrammes = [
@@ -111,21 +111,21 @@ const brunch = () => {
       "anniversaire",
     ],
     [
-      "anniversaire",
+      "otherthings",
       "juste un peu de data",
       "05-22-2022",
       "06-22-2022",
-      "anniversaire",
+      "otherthings",
     ],
     [
-      "anniversaire",
+      "otherthings",
       "juste un peu de data",
       "05-22-2022",
       "06-22-2022",
-      "anniversaire",
+      "otherthings",
     ],
     [
-      "anniversaire",
+      "otherthings",
       "juste un peu de data",
       "05-22-2022",
       "06-22-2022",
