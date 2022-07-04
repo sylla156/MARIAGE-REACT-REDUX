@@ -1,0 +1,28 @@
+@use '../../style/_palettes' as *;
+.about {
+    height: 100%;
+    width: 82%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    .title{
+        height: 50%;
+        width: 100%;
+        background-color: $secondary;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        color: $five;
+        h1{
+            text-transform: capitalize;
+            font-size: 3em;
+        }
+    }
+
+    .content {
+        height: 50%;
+        width: 70%;
+        margin-inline: auto;
+    }
+}
