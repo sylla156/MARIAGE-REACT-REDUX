@@ -1,8 +1,8 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import calend from "../../Assets/img/Profils/calend.png";
 import book from "../../Assets/img/Profils/book.png";
 import people from "../../Assets/img/Profils/people.png";
-import position from "../../Assets/img/Profils/position.png";
+import lieu from "../../Assets/img/Profils/position.png";
 import otherUser from "../../Assets/img/Profils/otherUser.png";
 import invitation from "../../Assets/img/Profils/invitation.png";
 import creation from "../../Assets/img/Profils/creation.png";
@@ -10,41 +10,68 @@ import tableImg from "../../Assets/img/Profils/tableImg.png";
 import imgAction from "../../Assets/img/Profils/imgAction.png";
 import cr from "../../Assets/img/Icons/cr.png";
 import "./DashboardCenterData.scss";
-const DashboardCenterData = () => {
+import religieuse from "../../Helpers/contents/religieuse";
+import civile from "../../Helpers/contents/civile";
+import soiree from "../../Helpers/contents/soiree";
+import jeunes from "../../Helpers/contents/jeunes";
+import brunch from "../../Helpers/contents/brunch";
+
+
+const DashboardCenterData = ({ position }) => {
+  const [table, setTable] = useState("first");
+  const handleTable = useCallback((value) => {
+    setTable(value);
+  }, []);
   return (
     <div className="dashboard__center--data">
-      <Header />
-      <TableTitle />
-      <TableContent />
+      <Header table={table} position={position} />
+      <TableTitle
+        onChangeTable={handleTable}
+        table={table}
+        position={position}
+      />
+      <TableContent table={table} position={position} />
     </div>
   );
 };
-const TableTitle = () => {
-  const handleClick = useCallback((event) => {
-    const subtitleAll = Array.from(
-      document.querySelectorAll(".title .subtitle p")
-    );
-    const subtitleBorderAll = Array.from(
-      document.querySelectorAll(".border .subtitle div")
-    )
-    subtitleAll.forEach((subtitle) =>
-      subtitle.classList.remove("subtitleActive")
-    );
-    subtitleBorderAll.forEach((subtitleBorder) =>
-    subtitleBorder.classList.remove("subtitleBorderActive")
+const TableTitle = ({ onChangeTable, table, position }) => {
+  const handleClick = useCallback(
+    (event) => {
+      const subtitleAll = Array.from(
+        document.querySelectorAll(".title .subtitle p")
+      );
+      const subtitleBorderAll = Array.from(
+        document.querySelectorAll(".border .subtitle div")
+      );
+      subtitleAll.forEach((subtitle) =>
+        subtitle.classList.remove("subtitleActive")
+      );
+      subtitleBorderAll.forEach((subtitleBorder) =>
+        subtitleBorder.classList.remove("subtitleBorderActive")
+      );
+      const position = event.target.classList[0];
+      const border = document.querySelector(`.border .subtitle .${position}`);
+      border.classList.add("subtitleBorderActive");
+      event.target.classList.add("subtitleActive");
+      // top it's the select effect
+      //down is for change the table
+      onChangeTable(event.target.classList[0]);
+    },
+    [table]
   );
-    const position = event.target.classList[0];
-    const border = document.querySelector(`.border .subtitle .${position}`);
-    border.classList.add('subtitleBorderActive')
-    event.target.classList.add("subtitleActive");
-  });
   return (
     <div className="tableTitle">
       <div className="title">
         <div className="subtitle">
-          <p onClick={handleClick} className='first'>liste des invites (45)</p>
-          <p onClick={handleClick} className='second'>groupe d'invites (03)</p>
-          <p onClick={handleClick} className='three'>programmes (01)</p>
+          <p onClick={handleClick} className="first subtitleActive">
+            liste des invites (45)
+          </p>
+          <p onClick={handleClick} className="second">
+            groupe d'invites (03)
+          </p>
+          <p onClick={handleClick} className="three">
+            programmes (01)
+          </p>
         </div>
         <div className="stats">
           <p>
@@ -54,7 +81,7 @@ const TableTitle = () => {
       </div>
       <div className="border">
         <div className="subtitle">
-          <div className="first"></div>
+          <div className="first subtitleBorderActive"></div>
           <div className="second"></div>
           <div className="three"></div>
         </div>
@@ -96,79 +123,98 @@ const TableTitle = () => {
     </div>
   );
 };
-const TableContent = () => {
+const TableContent = ({ table, position }) => {
+  const [data, setData] = useState(religieuse());
+  const [tableContent, setTableContent] = useState(
+    <Table head={data.headList} body={data.bodyList} />
+  );
+  useEffect(() => {
+    console.log(position);
+    switch (position) {
+      case "religieuse":
+        setData(religieuse());
+        break;
+      case "civile":
+        setData(civile());
+        break;
+      case "soiree":
+        setData(soiree());
+        break;
+      case "jeunes":
+        setData(jeunes());
+        break;
+      case "brunch":
+        setData(brunch());
+        break;
+
+      default:
+        break;
+    }
+  }, [position, table]);
+
+  useEffect(() => {
+    switch (table) {
+      case "first":
+        setTableContent(<Table head={data.headList} body={data.bodyList} />);
+        break;
+      case "second":
+        setTableContent(
+          <Table head={data.headGroupe} body={data.bodyGroupe} />
+        );
+
+        break;
+      case "three":
+        setTableContent(
+          <Table head={data.headProgrammes} body={data.bodyProgrammes} />
+        );
+
+        break;
+
+      default:
+        break;
+    }
+  }, [data]);
+
+  return <div className="tableContent">{tableContent}</div>;
+};
+
+const Table = ({ head, body }) => {
   return (
-    <div className="tableContent">
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <input type="checkbox" />
-            </th>
-            <th>
-              Nom et prenom <Imgs />
-            </th>
-            <th>
-              Tags <Imgs />
-            </th>
-            <th>
-              Cote/Table <Imgs />
-            </th>
-            <th>
-              Guess <Imgs />
-            </th>
-            <th>
-              Telephone <Imgs />
-            </th>
-            <th>
-              E-mail <Imgs />
-            </th>
-            <th>
-              Identifiant <Imgs />
-            </th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>Sylla ibrahim</td>
-            <td>
-              <span>Parent</span>
-              <span>vip</span>
-            </td>
-            <td>Parasole Gauche</td>
-            <td>4</td>
-            <td>07080050604</td>
-            <td>brahim@novate.com</td>
-            <td>FF5WE66F</td>
-            <td>
-              <ImgAction />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>Sylla ibrahim</td>
-            <td>
-              <span>Parent</span>
-              <span>vip</span>
-            </td>
-            <td>Parasole Gauche</td>
-            <td>4</td>
-            <td>07080050604</td>
-            <td>brahim@novate.com</td>
-            <td>FF5WE66F</td>
-            <td>
-              <ImgAction />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" />
+          </th>
+          {head.map((element, key) => {
+            return (
+              <th key={key}>
+                {element} {<Imgs />}
+              </th>
+            );
+          })}
+
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {body.map((elements, key) => {
+          return (
+            <tr key={key}>
+              <td>
+                {" "}
+                <input type="checkbox" />
+              </td>
+
+              {elements.map((element, key) => {
+                return <td key={key}>{element}</td>;
+              })}
+              <td>{<ImgAction />}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
   );
 };
 const Imgs = () => {
@@ -177,22 +223,45 @@ const Imgs = () => {
 const ImgAction = () => {
   return <img src={imgAction} alt="action" />;
 };
-const Header = () => {
+const Header = ({ table, position }) => {
+  const [data, setData] = useState(religieuse().header);
+  useEffect(() => {
+    switch (position) {
+      case "religieuse":
+        setData(religieuse().header);
+        break;
+      case "civile":
+        setData(civile().header);
+        break;
+      case "soiree":
+        setData(soiree().header);
+        break;
+      case "jeunes":
+        setData(jeunes().header);
+        break;
+      case "brunch":
+        setData(brunch().header);
+        break;
+
+      default:
+        break;
+    }
+  }, [position]);
   return (
     <div className="header">
       <div className="first">
-        <DashboardTitle img={cr} title="ceremonie religieuse" />
+        <DashboardTitle img={data.img} title={data.title} />
         <div className="underline"></div>
         <div className="details">
           <div className="premier">
             <img src={calend} alt="calendrier" />
-            <span>Le 17 Mars 2022</span>
-            <span>A partir de 10 h</span>
+            <span>{data.date}</span>
+            <span>A partir de {data.hour} h</span>
           </div>
           <div className="deuxieme">
-            <img src={position} alt="position" />
-            <span>Mosquee Hamsa</span>
-            <span>Cocody,Abidjan,Cote d'ivoire</span>
+            <img src={lieu} alt="position" />
+            <span>{data.lieu}</span>
+            <span>{data.secondLieu}</span>
           </div>
         </div>
       </div>
@@ -203,7 +272,7 @@ const Header = () => {
             <img src={book} alt="book" />
           </div>
           <div className="content">
-            <p>03</p>
+            <p>{data.programmesNombre}</p>
           </div>
         </div>
         <div className="deuxieme child">
@@ -212,7 +281,7 @@ const Header = () => {
             <img src={people} alt="people" />
           </div>
           <div className="content">
-            <p>03</p>
+            <p>{data.inviteNombre}</p>
           </div>
         </div>
       </div>
