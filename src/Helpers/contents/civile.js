@@ -1,14 +1,15 @@
-import cr from "../../Assets/img/Icons/cr.png";
-const religieuse = () => {
+import crc from "../../Assets/img/Icons/crc.png";
+
+const civile = () => {
   const header = {
-    img: cr,
-    title: "ceremonie Religieuse",
-    date: "le 17 mars 2022",
+    img: crc,
+    title: "ceremonie civile",
+    date: "le 31 decembre 2022",
     hour: "10",
-    lieu: "Mosquee Hamsa",
+    lieu: "Hotel ivoire",
     secondLieu: "Cocody,Abidjan,Cote D'ivoire",
-    programmesNombre: 3,
-    inviteNombre: 3,
+    programmesNombre: 1000,
+    inviteNombre: 6000,
   };
   const headList = [
     "nom et prenoms",
@@ -126,4 +127,4 @@ const religieuse = () => {
   };
 };
 
-export default religieuse;
+export default civile;

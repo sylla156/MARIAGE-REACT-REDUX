@@ -1,14 +1,14 @@
-import cr from "../../Assets/img/Icons/cr.png";
-const religieuse = () => {
+import bch from "../../Assets/img/Icons/brunch.png";
+const brunch = () => {
   const header = {
-    img: cr,
-    title: "ceremonie Religieuse",
-    date: "le 17 mars 2022",
+    img: bch,
+    title: "brunch",
+    date: "le 22 mai 2022",
     hour: "10",
     lieu: "Mosquee Hamsa",
     secondLieu: "Cocody,Abidjan,Cote D'ivoire",
-    programmesNombre: 3,
-    inviteNombre: 3,
+    programmesNombre: 15,
+    inviteNombre: 15,
   };
   const headList = [
     "nom et prenoms",
@@ -22,49 +22,67 @@ const religieuse = () => {
   ];
   const bodyList = [
     [
-      "sylla ibrahim",
-      "vip",
-      "Parasole Gauche",
-      "4",
+      "toure aline",
+      "other",
+      "table droite",
+      "1",
       "0105060406",
-      "brahim@novate.com",
-      "FFW5FEWS",
+      "aline@gmail.com",
+      "50540",
     ],
     [
-      "sylla ibrahim",
-      "vip",
-      "Parasole Gauche",
-      "4",
+      "toure aline",
+      "other",
+      "table droite",
+      "1",
       "0105060406",
-      "brahim@novate.com",
-      "FFW5FEWS",
+      "aline@gmail.com",
+      "50540",
     ],
     [
-      "sylla ibrahim",
-      "vip",
-      "Parasole Gauche",
-      "4",
+      "toure aline",
+      "other",
+      "table droite",
+      "1",
       "0105060406",
-      "brahim@novate.com",
-      "FFW5FEWS",
+      "aline@gmail.com",
+      "50540",
     ],
     [
-      "sylla ibrahim",
-      "vip",
-      "Parasole Gauche",
-      "4",
+      "toure aline",
+      "other",
+      "table droite",
+      "1",
       "0105060406",
-      "brahim@novate.com",
-      "FFW5FEWS",
+      "aline@gmail.com",
+      "50540",
+    ],
+    [
+      "toure aline",
+      "other",
+      "table droite",
+      "1",
+      "0105060406",
+      "aline@gmail.com",
+      "50540",
+    ],
+    [
+      "toure aline",
+      "other",
+      "table droite",
+      "1",
+      "0105060406",
+      "aline@gmail.com",
+      "50540",
     ],
   ];
 
   const headGroupe = ["Libelle du groupe", "invite du groupe", "action"];
   const bodyGroupe = [
-    ["travail", "2"],
-    ["travail", "2"],
-    ["travail", "2"],
-    ["travail", "2"],
+    ["famille", "4"],
+    ["famille", "4"],
+    ["famille", "4"],
+    ["famille", "4"],
     ["travail", "2"],
     ["travail", "2"],
   ];
@@ -79,14 +97,14 @@ const religieuse = () => {
   ];
   const bodyProgrammes = [
     [
-      "anniversaire",
+      "jeux",
       "juste un peu de data",
       "05-22-2022",
       "06-22-2022",
       "anniversaire",
     ],
     [
-      "anniversaire",
+      "jeux",
       "juste un peu de data",
       "05-22-2022",
       "06-22-2022",
@@ -126,4 +144,4 @@ const religieuse = () => {
   };
 };
 
-export default religieuse;
+export default brunch;

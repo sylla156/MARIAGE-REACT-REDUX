@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import calend from "../../Assets/img/Profils/calend.png";
 import book from "../../Assets/img/Profils/book.png";
 import people from "../../Assets/img/Profils/people.png";
-import position from "../../Assets/img/Profils/position.png";
+import lieu from "../../Assets/img/Profils/position.png";
 import otherUser from "../../Assets/img/Profils/otherUser.png";
 import invitation from "../../Assets/img/Profils/invitation.png";
 import creation from "../../Assets/img/Profils/creation.png";
@@ -11,20 +11,30 @@ import imgAction from "../../Assets/img/Profils/imgAction.png";
 import cr from "../../Assets/img/Icons/cr.png";
 import "./DashboardCenterData.scss";
 import religieuse from "../../Helpers/contents/religieuse";
-const DashboardCenterData = () => {
+import civile from "../../Helpers/contents/civile";
+import soiree from "../../Helpers/contents/soiree";
+import jeunes from "../../Helpers/contents/jeunes";
+import brunch from "../../Helpers/contents/brunch";
+
+
+const DashboardCenterData = ({ position }) => {
   const [table, setTable] = useState("first");
   const handleTable = useCallback((value) => {
     setTable(value);
   }, []);
   return (
     <div className="dashboard__center--data">
-      <Header table={table} />
-      <TableTitle onChangeTable={handleTable} table={table} />
-      <TableContent table={table} />
+      <Header table={table} position={position} />
+      <TableTitle
+        onChangeTable={handleTable}
+        table={table}
+        position={position}
+      />
+      <TableContent table={table} position={position} />
     </div>
   );
 };
-const TableTitle = ({ onChangeTable, table }) => {
+const TableTitle = ({ onChangeTable, table, position }) => {
   const handleClick = useCallback(
     (event) => {
       const subtitleAll = Array.from(
@@ -113,26 +123,49 @@ const TableTitle = ({ onChangeTable, table }) => {
     </div>
   );
 };
-const TableContent = ({ table }) => {
+const TableContent = ({ table, position }) => {
+  const [data, setData] = useState(religieuse());
   const [tableContent, setTableContent] = useState(
-    <Table head={religieuse().headList} body={religieuse().bodyList} />
+    <Table head={data.headList} body={data.bodyList} />
   );
+  useEffect(() => {
+    console.log(position);
+    switch (position) {
+      case "religieuse":
+        setData(religieuse());
+        break;
+      case "civile":
+        setData(civile());
+        break;
+      case "soiree":
+        setData(soiree());
+        break;
+      case "jeunes":
+        setData(jeunes());
+        break;
+      case "brunch":
+        setData(brunch());
+        break;
+
+      default:
+        break;
+    }
+  }, [position, table]);
+
   useEffect(() => {
     switch (table) {
       case "first":
-        setTableContent(
-          <Table head={religieuse().headList} body={religieuse().bodyList} />
-        );
+        setTableContent(<Table head={data.headList} body={data.bodyList} />);
         break;
       case "second":
         setTableContent(
-          <Table head={religieuse().headGroupe} body={religieuse().bodyGroupe} />
+          <Table head={data.headGroupe} body={data.bodyGroupe} />
         );
 
         break;
       case "three":
         setTableContent(
-          <Table head={religieuse().headProgrammes} body={religieuse().bodyProgrammes} />
+          <Table head={data.headProgrammes} body={data.bodyProgrammes} />
         );
 
         break;
@@ -140,7 +173,8 @@ const TableContent = ({ table }) => {
       default:
         break;
     }
-  }, [table]);
+  }, [data]);
+
   return <div className="tableContent">{tableContent}</div>;
 };
 
@@ -189,22 +223,45 @@ const Imgs = () => {
 const ImgAction = () => {
   return <img src={imgAction} alt="action" />;
 };
-const Header = ({ table }) => {
+const Header = ({ table, position }) => {
+  const [data, setData] = useState(religieuse().header);
+  useEffect(() => {
+    switch (position) {
+      case "religieuse":
+        setData(religieuse().header);
+        break;
+      case "civile":
+        setData(civile().header);
+        break;
+      case "soiree":
+        setData(soiree().header);
+        break;
+      case "jeunes":
+        setData(jeunes().header);
+        break;
+      case "brunch":
+        setData(brunch().header);
+        break;
+
+      default:
+        break;
+    }
+  }, [position]);
   return (
     <div className="header">
       <div className="first">
-        <DashboardTitle img={cr} title="ceremonie religieuse" />
+        <DashboardTitle img={data.img} title={data.title} />
         <div className="underline"></div>
         <div className="details">
           <div className="premier">
             <img src={calend} alt="calendrier" />
-            <span>Le 17 Mars 2022</span>
-            <span>A partir de 10 h</span>
+            <span>{data.date}</span>
+            <span>A partir de {data.hour} h</span>
           </div>
           <div className="deuxieme">
-            <img src={position} alt="position" />
-            <span>Mosquee Hamsa</span>
-            <span>Cocody,Abidjan,Cote d'ivoire</span>
+            <img src={lieu} alt="position" />
+            <span>{data.lieu}</span>
+            <span>{data.secondLieu}</span>
           </div>
         </div>
       </div>
@@ -215,7 +272,7 @@ const Header = ({ table }) => {
             <img src={book} alt="book" />
           </div>
           <div className="content">
-            <p>03</p>
+            <p>{data.programmesNombre}</p>
           </div>
         </div>
         <div className="deuxieme child">
@@ -224,7 +281,7 @@ const Header = ({ table }) => {
             <img src={people} alt="people" />
           </div>
           <div className="content">
-            <p>03</p>
+            <p>{data.inviteNombre}</p>
           </div>
         </div>
       </div>

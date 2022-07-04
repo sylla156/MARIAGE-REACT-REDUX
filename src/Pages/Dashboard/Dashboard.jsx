@@ -9,13 +9,7 @@ import Events from "../../Feature/Events/Events";
 const Dashboard = () => {
   const [sidebardSwitch, setsidebardSwitch] = useState("ceremonie");
   const token = useSelector(state => state.auth.value)
-  useEffect(() => {
-    console.log(sidebardSwitch);
-    const users = decode(token.token);
-    Events().then((response) => {
-      console.log(response);
-    })
-  }, [sidebardSwitch]);
+
   const changeSwitch = useCallback(
     (value) => {
       setsidebardSwitch(value);

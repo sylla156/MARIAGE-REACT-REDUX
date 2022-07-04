@@ -1,14 +1,14 @@
-import cr from "../../Assets/img/Icons/cr.png";
-const religieuse = () => {
+import dgj from "../../Assets/img/Icons/dgj.png";
+const jeunes = () => {
   const header = {
-    img: cr,
-    title: "ceremonie Religieuse",
+    img: dgj,
+    title: "diner gala pour jeunes",
     date: "le 17 mars 2022",
     hour: "10",
     lieu: "Mosquee Hamsa",
     secondLieu: "Cocody,Abidjan,Cote D'ivoire",
-    programmesNombre: 3,
-    inviteNombre: 3,
+    programmesNombre: 103,
+    inviteNombre: 30,
   };
   const headList = [
     "nom et prenoms",
@@ -126,4 +126,4 @@ const religieuse = () => {
   };
 };
 
-export default religieuse;
+export default jeunes;

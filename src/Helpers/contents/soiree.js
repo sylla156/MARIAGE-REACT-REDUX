@@ -1,14 +1,14 @@
-import cr from "../../Assets/img/Icons/cr.png";
-const religieuse = () => {
+import crc from "../../Assets/img/Icons/crc.png";
+const soiree = () => {
   const header = {
-    img: cr,
-    title: "ceremonie Religieuse",
-    date: "le 17 mars 2022",
+    img: crc,
+    title: "diner gala soiree civile",
+    date: "le 11 juillet 2022",
     hour: "10",
-    lieu: "Mosquee Hamsa",
+    lieu: "hotel vitevite",
     secondLieu: "Cocody,Abidjan,Cote D'ivoire",
-    programmesNombre: 3,
-    inviteNombre: 3,
+    programmesNombre: 30,
+    inviteNombre: 300,
   };
   const headList = [
     "nom et prenoms",
@@ -22,7 +22,7 @@ const religieuse = () => {
   ];
   const bodyList = [
     [
-      "sylla ibrahim",
+      "karim ibrahim",
       "vip",
       "Parasole Gauche",
       "4",
@@ -31,13 +31,13 @@ const religieuse = () => {
       "FFW5FEWS",
     ],
     [
-      "sylla ibrahim",
-      "vip",
-      "Parasole Gauche",
-      "4",
-      "0105060406",
-      "brahim@novate.com",
-      "FFW5FEWS",
+        "karim ibrahim",
+        "vip",
+        "Parasole Gauche",
+        "4",
+        "0105060406",
+        "brahim@novate.com",
+        "FFW5FEWS",
     ],
     [
       "sylla ibrahim",
@@ -126,4 +126,4 @@ const religieuse = () => {
   };
 };
 
-export default religieuse;
+export default soiree;
